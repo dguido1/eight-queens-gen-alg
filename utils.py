@@ -192,7 +192,12 @@ def weighted_sampler(seq, weights):
     totals = []
     for w in weights:
         totals.append(w + totals[-1] if totals else w)
-    return lambda: seq[bisect.bisect(totals, random.uniform(0, totals[-1]))]
+    #print("TIK=", bisect.bisect(totals, random.uniform(0, totals[-1])))
+    myLambdaIndex = bisect.bisect(totals, random.uniform(0, totals[-1]))
+    #if( myLambdaIndex<len(seq) & myLambdaIndex >=0):
+    #    return lambda: seq[myLambdaIndex]
+    #else:
+    return lambda: seq[myLambdaIndex%len(seq)]
 
 
 def weighted_choice(choices):

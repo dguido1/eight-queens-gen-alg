@@ -10,6 +10,7 @@ import sys
 from collections import deque
 import random
 from utils import *
+from n_queens_game import *
 
 
 class Problem:
@@ -421,7 +422,7 @@ def astar_search(problem, h=None, display=False):
 
 
 # ______________________________________________________________________________
-# A* heuristics 
+# A* heuristics
 
 class EightPuzzle(Problem):
     """ The problem of sliding tiles numbered from 1 to 8 on a 3x3 board, where one of the
@@ -487,7 +488,7 @@ class EightPuzzle(Problem):
         return inversion % 2 == 0
 
     def h(self, node):
-        """ Return the heuristic value for a given state. Default heuristic function used is 
+        """ Return the heuristic value for a given state. Default heuristic function used is
         h(n) = number of misplaced tiles """
 
         return sum(s != g for (s, g) in zip(node.state, self.goal))
@@ -673,7 +674,7 @@ def simulated_annealing(problem, schedule=exp_schedule()):
 
 
 def simulated_annealing_full(problem, schedule=exp_schedule()):
-    """ This version returns all the states encountered in reaching 
+    """ This version returns all the states encountered in reaching
     the goal state."""
     states = []
     current = Node(problem.initial)
@@ -908,56 +909,68 @@ class LRTAStarAgent:
 # Genetic Algorithm
 
 
-def genetic_search(problem, ngen, pmut, n):
+def genetic_search(problem, ngen, pmut, n, game):
     """Call genetic_algorithm on the appropriate parts of a problem.
     This requires the problem to have states that can mate and mutate,
     plus a value method that scores states."""
 
     # NOTE: This is not tested and might not work.
     # TODO: Use this function to make Problems work with genetic_algorithm.
-
+    if n<4:
+        print ("Cannot find solution with less than 4x4 board size")
+        return None
     s = problem.initial
     states = [problem.result(s, a) for a in problem.actions(s)]
     random.shuffle(states)
     gene_pool = range(0,n)
-    genetic_algorithm(states[:n], problem.value, gene_pool, n*(n-1)/2 ,ngen, pmut)
+    return genetic_algorithm(states[:n], problem.value, gene_pool, n*(n-1)/2 ,ngen, pmut, game)
 
-def genetic_algorithm(population, fitness_fn, gene_pool, f_thres, ngen, pmut):
+
+def genetic_algorithm(population, fitness_fn, gene_pool, f_thres, ngen, pmut, game):
     """[Figure 4.8]"""
+
     population = init_population(ngen,gene_pool,len(gene_pool))
 
     #Define fitness_value for looping and comparing later inside the loop
-    #fitness_value = 0
-    #i=0
-    #while fitness_value < f_thres:
-    for i in range(ngen):
-        #i+=1
+    fitness_value = 0
+    i=0
+    while fitness_value < f_thres:
+    #for i in range(ngen):
+        i+=1
         #Count generation order
-        print("At ",i, " generation: ")
-        
-        population = [mutate(recombine(*select(2, population, fitness_fn)), gene_pool, pmut)
+        game.process_events()
+        game.update_loading(i)
+
+        #print("At ",i, " generation: ")
+
+        population = [mutate(recombine_uninform(*select(2, population, fitness_fn)), gene_pool, pmut)
                       for j in range(len(population))]
-        
+
         #Print out all chromosomes jth of a generation ith
-        for j in range(len(population)):
-            print("----Element ",j, ": ", population[j], 'f= ',fitness_fn(population[j]))
-        
+        #for j in range(len(population)):
+        #    print("----Element ",j, ": ", population[j], 'f= ',fitness_fn(population[j]))
+
         #Get the maximum fittest value of a loop
         fittest_individual = max(population, key=fitness_fn)
         fitness_value = fitness_fn(fittest_individual)
-        print("Max fitness at loop ",i," is ",fittest_individual, " with f= ", fitness_value)
-        
+
+        #fittest_individual = fitness_threshold(fitness_fn,f_thres,population)
+        #if fittest_individual:
+        #    fitness_value = fitness_fn(fittest_individual)
+        #print("Max fitness at loop ",i," is ",fittest_individual, " with f= ", fitness_value)
+        #    return None
+
         #End the loop when getting the fittest one
         if fitness_value >= f_thres:
             print("Best fittest found! ", fittest_individual, " with f=",fitness_value)
-            return None
 
         # Skip calling fitness_threshold save time of running and loops
 
     #If still not, print out whatever from last round
-    print("Not the best but I found :")
-    temp=max(population, key=fitness_fn)
-    print(temp, "f = ", fitness_fn(temp))
+    #print("Not the best but I found :")
+    #temp=max(population, key=fitness_fn)
+    #print(temp, "f = ", fitness_fn(temp))
+    return fittest_individual
 
 def fitness_threshold(fitness_fn, f_thres, population):
     if not f_thres:
@@ -979,7 +992,7 @@ def init_population(pop_number, gene_pool, state_length):
     population = []
     for i in range(pop_number):
         new_individual = [random.randrange(0, g) for j in range(state_length)]
-        
+
         population.append(new_individual)
 
     return population
@@ -991,11 +1004,15 @@ def select(r, population, fitness_fn):
     return [sampler() for i in range(r)]
 
 
-def recombine(x, y):    
+def recombine(x, y):
     n = len(x)
-    c = random.randrange(0, n)
-    return x[0:c] + y[c:n]
-
+    if (n%2==1):
+        c1 = random.randrange(0, (int)(n/2))
+        return x[0:c1] + y[c1:n]
+    else:
+        c1 = random.randrange(0, (int)(n/2))
+        c2 = random.randrange(c1, n)
+        return x[0:c1] + y[c1:c2]+x[c2:n]
 
 def recombine_uniform(x, y):
     n = len(x)
@@ -1005,8 +1022,29 @@ def recombine_uniform(x, y):
         ix = indexes[i]
         result[ix] = x[ix] if i < n / 2 else y[ix]
 
-    return ''.join(str(r) for r in result)
+    #return ''.join(str(r) for r in result)
+    return result
 
+def recombine_uninform(x, y):
+    n = len(x)
+    result = [0] * n
+    is_rotate = random.randrange(0, 2)
+    if (n%2==1):
+        for i in range(n):
+            indexes = random.randrange(0, n+1)
+            if (is_rotate==0):
+                result[i] = x[i] if (indexes%2==0) else y[i]
+            else:
+                result[i] = y[i] if (indexes%2==1) else x[i]
+    else:
+        for i in range(n):
+            indexes = random.randrange(0, n+1)
+            if (is_rotate==0):
+                result[i] = x[i] if (indexes%2==1) else y[i]
+            else:
+                result[i] = y[i] if (indexes%2==0) else x[i]
+    #return ''.join(str(r) for r in result)
+    return result
 
 def mutate(x, gene_pool, pmut):
     if random.uniform(0, 1) >= pmut:
