@@ -1,17 +1,24 @@
 """
-        Application:    Pac-Man Portal
+        Application:    N-Queens Puzzle
           File Name:    background.py
-             Course:    CS 386 Into to Game Design and Production
-           Semester:    Spring 20'
-           Due Date:    March 11
-            Authors:    David Guido   |  Contact: davidguido@litlabproductions.com
-                        Josh Maranan  |  Contact:
-"""
+  GitHub Repository:    https://github.com/dguido1/eight-queens-gen-alg
+             Course:    CPSC 481 A.I.
+           Semester:    Spring 21'
+           Due Date:    May 18
+            Authors:    David Guido   |   GitHub: @DGuido1   |   Email: dguido1@csu.fullerton.edu
+                        Trong Pham
+                        Jacqueline Kubiak
+
+        *******************
+        *  background.py  *
+        **********************************************************************************
+            Provides an easy-to-use background object for our solution to render on top of
+"""""
+
 
 import pygame as pg
 
 
-# Class handling display of maze background
 class Background(pg.sprite.Sprite):
 
     def __init__(self, image_file, location):

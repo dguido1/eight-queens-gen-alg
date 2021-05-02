@@ -931,46 +931,23 @@ def genetic_algorithm(population, fitness_fn, gene_pool, f_thres, ngen, pmut, ga
 
     population = init_population(ngen,gene_pool,len(gene_pool))
 
-    #Define fitness_value for looping and comparing later inside the loop
-    fitness_value = 0
-    i=0
-    while fitness_value < f_thres:
-    #for i in range(ngen):
-        i+=1
-        #Count generation order
-        game.process_events()
-        game.update_loading(i)
+    fitness_value = 0    # Define fitness_value for looping and comparing later inside the loop
+    i = 0
 
-        #print("At ",i, " generation: ")
+    while fitness_value < f_thres:
+        i += 1                                        # Count generation order
+
+        game.process_events()                         # Get user input
+        game.render_finding_solution(i)               # Update screen state while loading
 
         population = [mutate(recombine_uninform(*select(2, population, fitness_fn)), gene_pool, pmut)
                       for j in range(len(population))]
 
-        #Print out all chromosomes jth of a generation ith
-        #for j in range(len(population)):
-        #    print("----Element ",j, ": ", population[j], 'f= ',fitness_fn(population[j]))
-
-        #Get the maximum fittest value of a loop
-        fittest_individual = max(population, key=fitness_fn)
+        fittest_individual = max(population, key=fitness_fn)    # Get the maximum fittest value of a loop
         fitness_value = fitness_fn(fittest_individual)
 
-        #fittest_individual = fitness_threshold(fitness_fn,f_thres,population)
-        #if fittest_individual:
-        #    fitness_value = fitness_fn(fittest_individual)
-        #print("Max fitness at loop ",i," is ",fittest_individual, " with f= ", fitness_value)
-        #    return None
-
-        #End the loop when getting the fittest one
-        if fitness_value >= f_thres:
-            print("Best fittest found! ", fittest_individual, " with f=",fitness_value)
-
-        # Skip calling fitness_threshold save time of running and loops
-
-    #If still not, print out whatever from last round
-    #print("Not the best but I found :")
-    #temp=max(population, key=fitness_fn)
-    #print(temp, "f = ", fitness_fn(temp))
     return fittest_individual
+
 
 def fitness_threshold(fitness_fn, f_thres, population):
     if not f_thres:
