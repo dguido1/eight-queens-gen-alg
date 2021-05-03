@@ -1,7 +1,7 @@
-# Eight Queens Genetic Algorithm
+# N Queens Genetic Algorithm
 
 
-### Eight queens problem solver via genetic algorithm
+### N queens problem solver via genetic algorithm
   
 #### &nbsp;&nbsp;&nbsp;&nbsp;Made by [@dguido1](https://github.com/dguido1), [@phdtrong](https://github.com/phdtrong) & Jacqueline kubiak
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;Built with [Pygame](https://www.pygame.org/news), an open source game engine
@@ -9,9 +9,9 @@
 
 ***
 <br/><br/>
-![ezgif com-optimize](https://github.com/dguido1/eight-queens-gen-alg/blob/main/eight-queens-gen-alg/demo/n-queen-demo02.gif)
-![ezgif com-optimize](https://github.com/dguido1/eight-queens-gen-alg/blob/main/eight-queens-gen-alg/demo/n-queen-demo00.png)
-![ezgif com-optimize](https://github.com/dguido1/eight-queens-gen-alg/blob/main/eight-queens-gen-alg/demo/n-queen-demo01.png)
+![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo02.gif)
+![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo00.png)
+![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo01.png)
 <br>
 
 ***
