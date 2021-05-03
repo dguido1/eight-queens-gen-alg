@@ -1,7 +1,7 @@
 """
         Application:    N-Queens Puzzle
           File Name:    background.py
-  GitHub Repository:    https://github.com/dguido1/eight-queens-gen-alg
+  GitHub Repository:    https://github.com/dguido1/n-queens-gen-algo
              Course:    CPSC 481 A.I.
            Semester:    Spring 21'
            Due Date:    May 18
