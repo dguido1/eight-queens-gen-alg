@@ -14,8 +14,13 @@
 ##### Click to watch demo on YouTube (Readme file doesn't allow video playback)
 [![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/yt_ss.png)](https://youtu.be/tw97i1rLPtM)
 
+##### N queens solution with N = 6 found in only 2 iterations!
 ![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo02.gif)
+
+##### N queens solution with N = 4 found in 4 iterations!
 ![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo00.png)
+
+##### N queens solution with N = 8 found in 138 iterations!
 ![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo01.png)
 <br>
 
