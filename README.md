@@ -10,10 +10,10 @@
 ***
 <br/><br/>
 
-![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo02.gif)
-
+### Demos
 ##### Click to watch demo on YouTube (Readme file doesn't allow video playback)
-![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/yt_ss.png)
+[![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/yt_ss.png)](https://youtu.be/tw97i1rLPtM)
+
 ![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo02.gif)
 ![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo00.png)
 ![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo01.png)
