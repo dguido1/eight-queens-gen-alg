@@ -113,6 +113,8 @@ def genetic_search(problem, ngen, pmut, n):
     ```python
     population = init_population(ngen, gene_pool, len(gene_pool))
     ```
+    <br>
+    
     2. Next step, let looping through each population(loop), select (select function), then crossover (recombine function), and then mutate them (mutate). These processes will be looped for each population (for loop)
     
     ```python
@@ -151,7 +153,6 @@ def genetic_search(problem, ngen, pmut, n):
     temp = max(population, key=fitness_fn)
     print(temp, "f = ", fitness_fn(temp))
     ```
-
 <br>
 
 ***
@@ -169,25 +170,25 @@ def genetic_search(problem, ngen, pmut, n):
 
   * **Puzzle Scene #1** <br>
   ![5](https://user-images.githubusercontent.com/47490318/134795408-b306ca73-f3d0-4601-90a5-aac176f2a27d.png)
-    * Note: These are the default values for N, NGen & Mutation  <br> <br>
+    * Note: These are the default values for N, NGen & Mutation  <br><br>
 
   * **Puzzle Scene #2** <br>
   ![4](https://user-images.githubusercontent.com/47490318/134795406-72986043-f4a0-406d-94a2-70a54d2c7e22.png) 
-    * Note: 4 is the minimum value for N
+    * Note: 4 is the minimum value for N <br><br>
     
   * **Puzzle Scene #3** <br>
   ![3](https://user-images.githubusercontent.com/47490318/134795405-c61a42ce-a6ff-4551-a221-c73bd633fb61.png)
-    * Note: 10 is the maximum value for N
+    * Note: 10 is the maximum value for N <br><br>
     
   * **Puzzle Scene #4** <br>
   ![2](https://user-images.githubusercontent.com/47490318/134795403-b24a2317-f18e-4846-9cc5-5fa719591c28.png)
-    * Note: After the find solution button is pressed, the following message is printed to the screen prior to a solution being found: <br>*Please wait<br>Current Iteration: x*
+    * Note: After the find solution button is pressed, the following message is printed to the screen prior to a solution being found: <br>*Please wait<br>Current Iteration: x* <br><br>
 
   * **Puzzle Scene #5** <br>
   ![1](https://user-images.githubusercontent.com/47490318/134795381-5b08ebb2-6230-44e5-adf2-06f6cafac74f.png)
     * Note: After a solution is found the following message  is printed to the screen: <br>*Solution: [ v1, v2, v3, .., vn ]<br>Total Iterations: k*
 
-<br><br>
+<br>
 
 ***
 
@@ -205,7 +206,7 @@ N | Average overall time(s) | Iterations (#) | Average time/iteration(s)
 8, 9 | 600 - 1200 | 4000 - 6000 | 0.5 - 0.9
 
 
-<br><br>
+<br>
 
 ***
 
@@ -225,7 +226,7 @@ N | Average overall time(s) | Iterations (#) | Average time/iteration(s)
 4. In conclusion, the GA is a good algorithm, in the sense of discovering solutions for tough and required resource problems like N queen attackers. This project approaches the problem in terms of biologically solver of genetic concepts, brings up opening topics for further application and improves many other hot Computer Science topics in the future.
 
 
-<br><br>
+<br>
 
 ***
 
