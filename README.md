@@ -109,20 +109,20 @@ def genetic_search(problem, ngen, pmut, n):
 <br>
 
 7. By defining all states before shuffling, and declaring gene_pool(all valid value of a gene), we can start to look through the core algorithm genetic_algorithm
-    * The first step is to define the population (init_population function)
+    1. The first step is to define the population (init_population function)
     ```python
     population = init_population(ngen, gene_pool, len(gene_pool))
     ```
-    <br>
-    * Next step, let looping through each population(loop), select (select function), then crossover (recombine function), and then mutate them (mutate). These processes will be looped for each population (for loop)
+    2. Next step, let looping through each population(loop), select (select function), then crossover (recombine function), and then mutate them (mutate). These processes will be looped for each population (for loop)
+    
     ```python
     for i in range(ngen):
         population = [mutate(recombine(*select(2, population, fitness_fn)),
                       gene_pool, pmut) for j in range(len(population))]
     ```
+    <br>
     
-<br>
-    * For easier to keep track the fitness value and chromosomes in each loop, let show those information into the screen (this code part is commented at this moment)
+    3. For easier to keep track the fitness value and chromosomes in each loop, let show those information into the screen (this code part is commented at this moment)
     ```python
     for j in range(len(population)):
         print("---Element",j,":",population[j],'f=',fitness_fn(population[j]))
@@ -135,22 +135,24 @@ def genetic_search(problem, ngen, pmut, n):
     print("Max fitness at loop ", i, " is ", fittest_individual, 
           " with f= ", fitness_value)
     ```
+    <br>
     
-    * If we see the fittest individual (its fitness value >= f_thres) then we output that individual to screen and stop looping. For the fittest individual, f_thres = N*(N-1)/2
+    4. If we see the fittest individual (its fitness value >= f_thres) then we output that individual to screen and stop looping. For the fittest individual, f_thres = N*(N-1)/2
     ```python
     if fitness_value >= f_thres:
        print("Best fittest found!", fittest_individual, "with f=", fitness_value)
     return None
     ```
-
-    * Otherwise, keeping looping without the fitness individual found yet, we end up show up the best fit individual from last loop (this code part is commented at this moment)
+    <br>
+    
+    5. Otherwise, keeping looping without the fitness individual found yet, we end up show up the best fit individual from last loop (this code part is commented at this moment)
     ```python
     print("Not the best but I found :")
     temp = max(population, key=fitness_fn)
     print(temp, "f = ", fitness_fn(temp))
     ```
 
-<br><br>
+<br>
 
 ***
 
