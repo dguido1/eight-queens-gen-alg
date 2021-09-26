@@ -15,7 +15,7 @@
   - [Analysis](#analysis)
   - [Graphical User Interface](#graphical-user-interface)
   - [Evaluation](#evaluation)
-  - [Discussion and Conclusion](#discussion-and-conclusion])
+  - [Conclusion](#conclusion])
   - [Demos](#demos)
 
 ***
@@ -201,7 +201,7 @@ N | Average overall time(s) | Iterations (#) | Average time/iteration(s)
 
 ***
 
-## Discussion and Conclusion
+## Conclusion
 
 - There are some remaining issue needs to work on here:
 
