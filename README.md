@@ -15,7 +15,7 @@
   - [Analysis](#analysis)
   - [Graphical User Interface](#graphical-user-interface)
   - [Evaluation](#evaluation)
-  - [Conclusion](#conclusion])
+  - [Conclusion](#conclusion)
   - [Demos](#demos)
 
 ***
