@@ -34,12 +34,12 @@
 1. Obtaining and inheriting base class NQueen (search.py, utils.py)
     * Defining fitness value of a state inside NQueen
     * Customize genetic search and GA itself for better result 
-    * Other customization if needed
+    * Other customization if needed <br> <br>
 2. Visualization result (background.py, n_queens_game.py, images folder)
     * Preparing graphic user interface background
     * Allowing user to select mutation rate, generation numbers, and N size
     * Loading background interface of options and buttons
-    * Viewing real time searching process into interface
+    * Viewing real time searching process into interface <br> <br>
 3. Advance options (future studies)
     * Showing selection, crossing over, and mutation process each iteration
     * Considering adding music and animation into search process
@@ -50,8 +50,8 @@
 
 ## Analysis 
 
-1. Theoretically, how many pairs of queen can be place into a N*N board, without any attack? It is combination of 2, with the size of N queens or (N)(N-1)/2
-2. The real fitness of the state is the maximum of non attack queen pairs. But, how many queen pairs attacked each other at a specific state? Recall the heuristic function which is built in NQueen problem class.
+1. Theoretically, how many pairs of queen can be place into a N*N board, without any attack? It is combination of 2, with the size of N queens or (N)(N-1)/2 <br><br>
+2. The real fitness of the state is the maximum of non attack queen pairs. But, how many queen pairs attacked each other at a specific state? Recall the heuristic function which is built in NQueen problem class. 
 
 ```python
 def h(self, node):
@@ -61,7 +61,8 @@ def h(self, node):
         for (r2, c2) in enumerate(node.state):
             if (r1, c1) != (r2, c2):
                 num_conflicts += self.conflict(r1, c1, r2, c2)
-```
+``` 
+<br>
 
 3. Therefore, the fitness value at a specific state would be (1)-(2) or
 
@@ -71,12 +72,13 @@ def value(self, state):
     myNode = Node(state)
     return int((self.N) * ((self.N) - 1) / 2 - self.h(myNode))
 ```
-
+<br>
 As students, we reuse code of NQueen class, and base on that, build up one more function called value(self, state). 
 
 Calling a combination of N queens in a board is a state, the purpose of this function is to evaluate the fitness value of that state. The higher this value is, the better we look for the resulting solution.
+<br>
 
-4. Reminding that the self.h(mode) is the total conflict of a state, by looking through all chromosomes that are randomly processed by GA’s population, we aim to seek for the smallest as we can, so that the fitness value (above) is the highest.
+4. Reminding that the self.h(mode) is the total conflict of a state, by looking through all chromosomes that are randomly processed by GA’s population, we aim to seek for the smallest as we can, so that the fitness value (above) is the highest. <br><br>
 
 5. Together with the based class of NQueen and our fitness value implemented, let initialize the NQueen problem in main function:
 
@@ -90,7 +92,7 @@ print("Beginning!")
 genetic_search(myNQueen, ngen, pmut, n)
 ```
 
-Basically, the value n is the input value of how many queens you want to place in the board. It is input by the user.
+Basically, the value n is the input value of how many queens you want to place in the board. It is input by the user. <br><br>
 
 6. Now, let’s go through the genetic_search(function) with parameter of problem(myNQueen), how generations we will loop through(ngen), what is the rate of mutation (pmut), and the default value of gene numbers inside a state (n)
 
@@ -104,18 +106,22 @@ def genetic_search(problem, ngen, pmut, n):
                       gene_pool, n * (n - 1) / 2, ngen, pmut)
 ```
 
+<br>
+
 7. By defining all states before shuffling, and declaring gene_pool(all valid value of a gene), we can start to look through the core algorithm genetic_algorithm
     * The first step is to define the population (init_population function)
     ```python
     population = init_population(ngen, gene_pool, len(gene_pool))
     ```
+    <br>
     * Next step, let looping through each population(loop), select (select function), then crossover (recombine function), and then mutate them (mutate). These processes will be looped for each population (for loop)
     ```python
     for i in range(ngen):
         population = [mutate(recombine(*select(2, population, fitness_fn)),
                       gene_pool, pmut) for j in range(len(population))]
     ```
-
+    
+<br>
     * For easier to keep track the fitness value and chromosomes in each loop, let show those information into the screen (this code part is commented at this moment)
     ```python
     for j in range(len(population)):
