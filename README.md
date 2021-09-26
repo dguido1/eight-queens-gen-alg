@@ -229,10 +229,11 @@ N | Average overall time(s) | Iterations (#) | Average time/iteration(s)
 ![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo02.gif)
 
 ##### N queens solution with N = 4 found in 4 iterations!
-![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo00.png)
+![111](https://user-images.githubusercontent.com/47490318/134796233-9202270a-97db-420a-9044-362d4f5955bd.png)
 
 ##### N queens solution with N = 8 found in 138 iterations!
-![ezgif com-optimize](https://github.com/dguido1/n-queens-gen-algo/blob/main/n-queens-gen-algo/demo/n-queen-demo01.png)
+![222](https://user-images.githubusercontent.com/47490318/134796232-65e332e7-74f5-497c-b191-28935a443ec7.png)
+
 <br>
 
 ***
