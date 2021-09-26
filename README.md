@@ -12,11 +12,11 @@
 - [N Queens Genetic Algorithm](#n-queens-genetic-algorithm)
   - [Introduction](#introduction)
   - [Approach](#approach)
-  - [Analysis and Demo](#analysis-and-demo)
+  - [Analysis](#analysis)
   - [Graphical User Interface](#graphical-user-interface)
   - [Evaluation](#evaluation)
   - [Discussion and Conclusion](#discussion-and-conclusion])
-
+  - [Demos](#demos)
 
 ***
 
@@ -48,7 +48,7 @@
 
 ***
 
-## Analysis and Demo
+## Analysis 
 
 1. Theoretically, how many pairs of queen can be place into a N*N board, without any attack? It is combination of 2, with the size of N queens or (N)(N-1)/2
 2. The real fitness of the state is the maximum of non attack queen pairs. But, how many queen pairs attacked each other at a specific state? Recall the heuristic function which is built in NQueen problem class.
@@ -197,29 +197,29 @@ N | Average overall time(s) | Iterations (#) | Average time/iteration(s)
 8, 9 | 600 - 1200 | 4000 - 6000 | 0.5 - 0.9
 
 
+<br><br>
+
+***
+
+## Discussion and Conclusion
+
+- There are some remaining issue needs to work on here:
+
+1. Since the selection, crossover, and mutation are random, there is no guarantee that GA will precisely find out the fittest individual with the highest value with no conflict at all.
+    * Suggestion: Customize the loop, not end by generation number but until seek out for the highest fitness of N chromosome’s size. The downside of this idea is long time committed when running code with big value of N, start at 6
+
+2. Attempting to implement the while loop with stop looping condition of seeking for the fittest individual seems ambiguous in many cases, especially if N is big and it strongly depends on every runtime compile.
+    * Suggest using a better computational engine instead. High cost of using this way
+
+3. Duplicate during GA process and showing the best fit individuals per generation
+    * Suggest to customize the crossover step of GA program in two main options, either by crossovering at the mid of the chromosome, or by crossovering at 2 differently random points of the chromosome.
+
+4. In conclusion, the GA is a good algorithm, in the sense of discovering solutions for tough and required resource problems like N queen attackers. This project approaches the problem in terms of biologically solver of genetic concepts, brings up opening topics for further application and improves many other hot Computer Science topics in the future.
 
 
+<br><br>
 
-
-
-
-
-
-
-
-## Discussion and Conclusion]
-
-
-
-
-
-
-
-
-
-
-
-<br/><br/>
+***
 
 ### Demos
 ##### Click to watch demo on YouTube (Readme file doesn't allow video playback)
