@@ -22,9 +22,9 @@
 
 ## Introduction
 
-- Genetic Algorithm (GA) is well known to apply the genetic concepts of selection, crossover, and mutation process into solving Computer Science problems. This report aims to focus on how to use GA to solve NQueen problems. NQueen problem is a question of how to put N queens into a board which has size of N*N that no queen attacks any others (highest fitness value)
+- A Genetic Algorithm (GA) is known to apply the genetic concepts of selection, crossover, and mutation process into solving Computer Science problems. This report aims to focus on how to use GA to solve the ***NQueens problem***. The NQueens problem is a question of *how to put N queens into a board which has size of **NxN** that no queen attacks any others (highest fitness value)*
 
-- To implement this problem into Computer Science programs, using the based class of Problems. Each state of the NQueen movement is a state (N elements), biologically called a chromosome with N genes. To reach the solution, we must find the best state (chromosome) that has the highest fitness value. 
+- Each new layout of queens represents a state (N elements), biologically called a chromosome with N genes. To reach the solution, we must find the *best state (chromosome)* that has the *highest fitness value*. 
 <br><br>
 
 ***
@@ -50,8 +50,8 @@
 
 ## Analysis 
 
-1. Theoretically, how many pairs of queen can be place into a N*N board, without any attack? It is combination of 2, with the size of N queens or (N)(N-1)/2 <br><br>
-2. The real fitness of the state is the maximum of non attack queen pairs. But, how many queen pairs attacked each other at a specific state? Recall the heuristic function which is built in NQueen problem class. 
+1. Theoretically, how many pairs of queens can be placed onto an **NxN** board, without any attacks taking place? This can be calulated by ***(N)(N-1)/2*** <br><br>
+2. The real fitness of the state is the maximum number of non attack queen pairs. However, how many queen pairs attacked each other at a specific state? Note the heuristic function that is built in the ***NQueen problem class***:
 
 ```python
 def h(self, node):
@@ -64,8 +64,7 @@ def h(self, node):
 ``` 
 <br>
 
-3. Therefore, the fitness value at a specific state would be (1)-(2) or
-
+3. Therefore, the fitness value at a specific state would be **(1)-(2)** or:
 
 ```python
 def value(self, state):
@@ -73,14 +72,14 @@ def value(self, state):
     return int((self.N) * ((self.N) - 1) / 2 - self.h(myNode))
 ```
 <br>
-As students, we reuse code of NQueen class, and base on that, build up one more function called value(self, state). 
+As students, we reuse code of the **NQueen class**, and build up one more function called **value(self, state)**. 
 
-Calling a combination of N queens in a board is a state, the purpose of this function is to evaluate the fitness value of that state. The higher this value is, the better we look for the resulting solution.
+Calling a combination of N queens on a board represents a state. The purpose of this function is to evaluate the fitness value of that state. The higher this value is, the better we look for the resulting solution.
 <br>
 
-4. Reminding that the self.h(mode) is the total conflict of a state, by looking through all chromosomes that are randomly processed by GA’s population, we aim to seek for the smallest as we can, so that the fitness value (above) is the highest. <br><br>
+4. Note that the **self.h(mode)** is the *total conflict of a state*. By looking through all chromosomes that are randomly processed by GA’s population, we look for the smallest so that the fitness value (above) is the highest. <br><br>
 
-5. Together with the based class of NQueen and our fitness value implemented, let initialize the NQueen problem in main function:
+5. Together with the based class of NQueen and our fitness value implemented, lets initialize the NQueen problem in main function:
 
 ```python
 n = int(input("Enter Queen number: "))   #i.e. 5
@@ -94,7 +93,7 @@ genetic_search(myNQueen, ngen, pmut, n)
 
 Basically, the value n is the input value of how many queens you want to place in the board. It is input by the user. <br><br>
 
-6. Now, let’s go through the genetic_search(function) with parameter of problem(myNQueen), how generations we will loop through(ngen), what is the rate of mutation (pmut), and the default value of gene numbers inside a state (n)
+6. Now, let’s go through the **genetic_search(function)** with parameter of **problem(myNQueen)**. How will generations loop through(ngen)? What is the rate of mutation (pmut) and the default value of gene numbers inside a state (n)?
 
 ```python
 def genetic_search(problem, ngen, pmut, n):
@@ -109,13 +108,13 @@ def genetic_search(problem, ngen, pmut, n):
 <br>
 
 7. By defining all states before shuffling, and declaring gene_pool(all valid value of a gene), we can start to look through the core algorithm genetic_algorithm
-    1. The first step is to define the population (init_population function)
+    1. The first step is to *define the population (init_population function)*:
     ```python
     population = init_population(ngen, gene_pool, len(gene_pool))
     ```
     <br>
     
-    2. Next step, let looping through each population(loop), select (select function), then crossover (recombine function), and then mutate them (mutate). These processes will be looped for each population (for loop)
+    2. Next loop through each population(loop), select (select function), then crossover (recombine function), and then mutate them (mutate). These processes will be looped for each population:
     
     ```python
     for i in range(ngen):
@@ -124,13 +123,13 @@ def genetic_search(problem, ngen, pmut, n):
     ```
     <br>
     
-    3. For easier to keep track the fitness value and chromosomes in each loop, let show those information into the screen (this code part is commented at this moment)
+    3. For *easier-to-track* *fitness values* and *chromosomes* in each loop, lets display the information to the screen (Commented out at the moment)
     ```python
     for j in range(len(population)):
         print("---Element",j,":",population[j],'f=',fitness_fn(population[j]))
     ```
     
-    * And show the maximum fitness value and the best fit individual of that loop
+    * And show the *maximum* fitness value and the *best fit individual* of that loop
     ```python
     fittest_individual = max(population, key=fitness_fn)
     fitness_value = fitness_fn(fittest_individual)
@@ -139,7 +138,7 @@ def genetic_search(problem, ngen, pmut, n):
     ```
     <br>
     
-    4. If we see the fittest individual (its fitness value >= f_thres) then we output that individual to screen and stop looping. For the fittest individual, f_thres = N*(N-1)/2
+    4. If we see the *fittest individual* (its fitness value >= f_thres) then we output that individual to screen and stop looping. For the fittest individual, f_thres = N*(N-1)/2:
     ```python
     if fitness_value >= f_thres:
        print("Best fittest found!", fittest_individual, "with f=", fitness_value)
@@ -147,7 +146,7 @@ def genetic_search(problem, ngen, pmut, n):
     ```
     <br>
     
-    5. Otherwise, keeping looping without the fitness individual found yet, we end up show up the best fit individual from last loop (this code part is commented at this moment)
+    5. Otherwise, keeping looping without the fitness individual found yet. We end up showing the best fit individual from last loop (Commented out at the moment)
     ```python
     print("Not the best but I found :")
     temp = max(population, key=fitness_fn)
@@ -159,7 +158,7 @@ def genetic_search(problem, ngen, pmut, n):
 
 ## Graphical User Interface
 
-- This project uses PyGame, an open source game engine to render both a menu scene and a puzzle scene to the screen as well as properly respond to user input. We developed a dynamic interface that responds to user-inputted changes in N’s value in real time by increasing/decreasing the board size. 
+- This project uses **PyGame**, an open source game engine to render both a **menu scene** and a **puzzle scene** to the screen as well as *properly respond to user input*. We developed a dynamic interface that responds to user-inputted changes in N’s value in *real time* by increasing/decreasing the board size. 
 
 
 ### UI Demo Images
@@ -212,18 +211,18 @@ N | Average overall time(s) | Iterations (#) | Average time/iteration(s)
 
 ## Conclusion
 
-- There are some remaining issue needs to work on here:
+- There are some remaining issues that could undoubtably be improved on:
 
-1. Since the selection, crossover, and mutation are random, there is no guarantee that GA will precisely find out the fittest individual with the highest value with no conflict at all.
-    * Suggestion: Customize the loop, not end by generation number but until seek out for the highest fitness of N chromosome’s size. The downside of this idea is long time committed when running code with big value of N, start at 6
+1. Since the selection, crossover, and mutation are random, there is no guarantee that GA will precisely find the fittest individual (with the highest value) with no conflict at all.
+    * **Suggestion**: Customize the loop so that it doesnt end by a *generation number* but until it actually seeks out for the *highest fitness of N chromosome’s size*. The downside of this is the long time committed when running code with big values of N, starting at 6.
 
 2. Attempting to implement the while loop with stop looping condition of seeking for the fittest individual seems ambiguous in many cases, especially if N is big and it strongly depends on every runtime compile.
-    * Suggest using a better computational engine instead. High cost of using this way
+    * **Suggestion**: Use a better computational engine instead
 
 3. Duplicate during GA process and showing the best fit individuals per generation
-    * Suggest to customize the crossover step of GA program in two main options, either by crossovering at the mid of the chromosome, or by crossovering at 2 differently random points of the chromosome.
+    * **Suggestion**: Customize the crossover step of the GA program in two main ways: either by crossing-over in the middle of the chromosome or by crossing-over at 2 differently random points of the chromosome.
 
-4. In conclusion, the GA is a good algorithm, in the sense of discovering solutions for tough and required resource problems like N queen attackers. This project approaches the problem in terms of biologically solver of genetic concepts, brings up opening topics for further application and improves many other hot Computer Science topics in the future.
+4. In conclusion, the GA is a good algorithm for discovering solutions for tough and required resource problems, like N queen attackers in this case. This project approaches the problem biologically by implementing a solver via genetic concepts.
 
 
 <br>
