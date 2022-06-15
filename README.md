@@ -3,7 +3,7 @@
 ### N queens problem solver via genetic algorithm
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;Made by David Guido
-i<br/>&nbsp;&nbsp;&nbsp;&nbsp;Built with [Pygame](https://www.pygame.org/news), an open source game engine
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;Built with [Pygame](https://www.pygame.org/news), an open source game engine
 <br> &nbsp;&nbsp;&nbsp;&nbsp;For CPSC 481 (Artificial Intelligence) at [***California State University Fullerton***](http://www.fullerton.edu/)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;Spring 21'
 
 ***
